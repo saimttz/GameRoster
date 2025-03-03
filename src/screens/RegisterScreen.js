@@ -28,7 +28,7 @@ export default function RegisterScreen({ navigation }) {
           <View style={styles.imageFond}>
             <Image
               style={styles.imageFondImg}
-              source={require("../../assets/pageSite11.png")}
+              source={require("../../assets/Images/backgroundImage/BackgroundImageRegister.png")}
               transition={false}
             />
           </View>

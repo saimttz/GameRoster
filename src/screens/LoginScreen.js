@@ -14,7 +14,9 @@ export default function LoginScreen({ navigation }) {
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <SafeAreaView style={styles.container}>
                     <View style={styles.imageFond}>
-                        <Image style={styles.imageFondImg} source={require('../../assets/pageSite12.png')} transition={false} />
+                        <TouchableOpacity>
+                            <Image style={styles.imageFondImg} source={require('../../assets/Images/backgroundImage/BackgroundImageLogin.png')} transition={false} />
+                        </TouchableOpacity>
                     </View>
                     <View style={styles.iconRetour}>
                         <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -35,7 +37,7 @@ export default function LoginScreen({ navigation }) {
 
                         </View>
                         <View style={styles.button}>
-                            <TouchableOpacity style={styles.buttonLogin}>
+                            <TouchableOpacity style={styles.buttonLogin} onPress={() => navigation.navigate('Home')}>
                                 <Text style={styles.textButtonLogin}>Se connecter</Text>
                             </TouchableOpacity>
                             <View style={styles.textSignUp}>
