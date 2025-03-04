@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import HomeLoginScreen from './src/screens/HomeLoginScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
@@ -27,7 +27,7 @@ export default function App() {
         <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="HomeAddGame" component={HomeAddGameScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="HomeAddGame" component={HomeAddGameScreen} options={{ headerShown: false, gestureDirection: 'vertical', ...TransitionPresets.ModalSlideFromBottomIOS }} />
       </Stack.Navigator>
     </NavigationContainer>
   )
