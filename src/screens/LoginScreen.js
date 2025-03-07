@@ -3,20 +3,26 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, Button, ImageBackground, TextInput, TouchableOpacity, Alert, KeyboardAvoidingView, Platform, TouchableWithoutFeedback, Keyboard, ScrollView } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import AntDesign from '@expo/vector-icons/AntDesign';
-
-
+import { CommonActions } from '@react-navigation/native';
 
 export default function LoginScreen({ navigation }) {
+    const handleLogin = () => {
+        navigation.dispatch(
+            CommonActions.reset({
+                index: 0,
+                routes: [{ name: 'Home' }],
+            })
+        );
+    };
 
     return (
-
         <SafeAreaProvider>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <SafeAreaView style={styles.container}>
                     <View style={styles.imageFond}>
-                        <TouchableOpacity>
-                            <Image style={styles.imageFondImg} source={require('../../assets/Images/backgroundImage/BackgroundImageLogin.png')} transition={false} />
-                        </TouchableOpacity>
+
+                        <Image style={styles.imageFondImg} source={require('../../assets/Images/backgroundImage/BackgroundImageLogin2.png')} transition={false} />
+
                     </View>
                     <View style={styles.iconRetour}>
                         <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -34,10 +40,9 @@ export default function LoginScreen({ navigation }) {
                         <View style={styles.inputsLogin}>
                             <TextInput style={styles.inputLogin} placeholder='Email' placeholderTextColor={"#414141"} />
                             <TextInput style={styles.inputLogin} placeholder='Mot de passe' placeholderTextColor={"#414141"} secureTextEntry={true} />
-
                         </View>
                         <View style={styles.button}>
-                            <TouchableOpacity style={styles.buttonLogin} onPress={() => navigation.navigate('Home')}>
+                            <TouchableOpacity style={styles.buttonLogin} onPress={handleLogin}>
                                 <Text style={styles.textButtonLogin}>Se connecter</Text>
                             </TouchableOpacity>
                             <View style={styles.textSignUp}>
@@ -45,14 +50,12 @@ export default function LoginScreen({ navigation }) {
                                 <TouchableOpacity onPress={() => navigation.navigate('Register')}>
                                     <Text style={styles.inscriptionTexteInscr}>Inscription</Text>
                                 </TouchableOpacity>
-
                             </View>
                         </View>
                     </View>
                 </SafeAreaView>
             </TouchableWithoutFeedback>
-        </SafeAreaProvider >
-
+        </SafeAreaProvider>
     );
 }
 
@@ -192,9 +195,6 @@ const styles = StyleSheet.create({
         fontSize: 10,
         fontFamily: 'Amaranth-Regular',
     }
-
-
-
 })
 
 

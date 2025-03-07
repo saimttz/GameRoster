@@ -4,7 +4,6 @@ import {
   StyleSheet,
   Text,
   View,
-  Image,
   Button,
   ImageBackground,
   TextInput,
@@ -15,12 +14,16 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
   ScrollView,
+  Image,
 } from "react-native";
-import FastImage from "react-native-fast-image";
+import FastImage from 'react-native-fast-image';
+
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+
 import AntDesign from "@expo/vector-icons/AntDesign";
 
 export default function RegisterScreen({ navigation }) {
+  console.log(FastImage);
   return (
     <SafeAreaProvider>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -31,6 +34,8 @@ export default function RegisterScreen({ navigation }) {
               source={require("../../assets/Images/backgroundImage/BackgroundImageRegister.png")}
               transition={false}
             />
+
+
           </View>
           <View style={styles.iconRetour}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -85,7 +90,7 @@ export default function RegisterScreen({ navigation }) {
           </View>
         </SafeAreaView>
       </TouchableWithoutFeedback>
-    </SafeAreaProvider>
+    </SafeAreaProvider >
   );
 }
 

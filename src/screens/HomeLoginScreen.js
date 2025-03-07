@@ -13,11 +13,11 @@ export default function HomeLoginScreen({ navigation }) {
         <SafeAreaProvider>
             <SafeAreaView style={styles.container}>
                 <View style={styles.imageFond2}>
-                    <Image style={styles.imageFondImg2} source={require('../../assets/Images/backgroundImage/BackgroundImageHomeLogin.png')} />
+                    <Image style={styles.imageFondImg2} source={require('../../assets/Images/backgroundImage/BackgroundImageHomeLogin2.png')} />
                 </View>
                 <View style={styles.contenuPage}>
                     <View style={styles.marqueLogoText}>
-                        <Image style={styles.marqueLogo} source={require('../../assets/Images/logo/logoContourText.png')} />
+                        <Image style={styles.marqueLogo} source={require('../../assets/Images/logo/logoContourText2.png')} />
                         <View style={styles.textMarque}>
                             <Text style={styles.gameText}>Game</Text>
                             <Text style={styles.rosterText}>Roster</Text>
