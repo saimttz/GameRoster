@@ -93,19 +93,17 @@ export default function ChatDetailScreen({ navigation }) {
                         </View>
                         <ScrollView contentContainerStyle={styles.scrollContainer}>
                             {messages.map(message => (
-
-                                <View style={[styles.messageContainer, message.isMine && styles.myMessageContainer]}>
+                                <View key={message.id} style={[styles.messageContainer, message.isMine && styles.myMessageContainer]}>
                                     {!message.isMine && <Image style={styles.avatar} source={{ uri: message.avatar }} />}
                                     <View style={[styles.messageContent, message.isMine && styles.myMessageContent]}>
                                         <Text style={styles.username}>{message.username}</Text>
-                                        <TouchableOpacity key={message.id} onLongPress={() => handleLongPressMessage(message)}>
+                                        <TouchableOpacity onLongPress={() => handleLongPressMessage(message)}>
                                             <Text style={[styles.messageText, message.isMine && styles.myMessageText]}>{message.text}</Text>
                                         </TouchableOpacity>
                                         <Text style={styles.timestamp}>{message.timestamp}</Text>
                                     </View>
                                     {message.isMine && <Image style={[styles.avatar, styles.myAvatar]} source={{ uri: message.avatar }} />}
                                 </View>
-
                             ))}
                         </ScrollView>
                         <View style={styles.inputContainer}>

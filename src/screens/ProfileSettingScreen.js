@@ -3,8 +3,20 @@ import { StyleSheet, Text, View, TouchableOpacity, ScrollView } from 'react-nati
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Entypo from '@expo/vector-icons/Entypo';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect, useState } from 'react';
 
 export default function ProfileSettingScreen({ navigation }) {
+    const [isDarkMode, setIsDarkMode] = useState(false);
+
+    useEffect(() => {
+        const loadSettings = async () => {
+            const darkMode = await AsyncStorage.getItem('darkMode');
+            if (darkMode !== null) setIsDarkMode(JSON.parse(darkMode));
+        };
+        loadSettings();
+    }, []);
+
     return (
         <SafeAreaProvider>
             <SafeAreaView style={styles.container}>
@@ -17,7 +29,7 @@ export default function ProfileSettingScreen({ navigation }) {
                 <ScrollView contentContainerStyle={styles.scrollContainer}>
                     <View style={styles.section}>
                         <Text style={styles.sectionTitle}>Compte</Text>
-                        <TouchableOpacity style={styles.button}>
+                        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('ProfileEditMdpCode')}>
                             <Text style={styles.buttonText}>Changer le mot de passe</Text>
                             <Entypo name="chevron-right" size={24} color="#ff286a" />
                         </TouchableOpacity>
@@ -28,8 +40,6 @@ export default function ProfileSettingScreen({ navigation }) {
                             <Text style={styles.buttonText}>Affichage</Text>
                             <Entypo name="chevron-right" size={24} color="#ff286a" />
                         </TouchableOpacity>
-
-
                     </View>
                     <View style={styles.section}>
                         <Text style={styles.sectionTitle}>Notifications</Text>
@@ -49,7 +59,6 @@ export default function ProfileSettingScreen({ navigation }) {
                             <Text style={styles.buttonText}>Signaler un problème</Text>
                         </TouchableOpacity>
                     </View>
-
                     <View style={styles.section}>
                         <Text style={styles.sectionTitle}>Conditions et Politique</Text>
                         <TouchableOpacity style={styles.button}>
@@ -92,7 +101,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     headerText: {
-        color: '#ff286a', // Pink color for text
+        color: '#ff286a',
         fontSize: 24,
         fontFamily: 'Amaranth-Bold',
         marginLeft: 10,
@@ -102,7 +111,7 @@ const styles = StyleSheet.create({
         marginBottom: 30,
     },
     sectionTitle: {
-        color: '#ff286a', // Pink color for section titles
+        color: '#ff286a',
         fontSize: 20,
         fontFamily: 'Amaranth-Bold',
         marginBottom: 10,

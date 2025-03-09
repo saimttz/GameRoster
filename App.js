@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import HomeLoginScreen from './src/screens/HomeLoginScreen';
 import LoginScreen from './src/screens/LoginScreen';
@@ -7,15 +7,19 @@ import RegisterScreen from './src/screens/RegisterScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import { useFonts } from 'expo-font';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Text } from 'react-native';
+import { Text, useColorScheme } from 'react-native';
 import ProfileEditScreen from './src/screens/ProfileEditScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import HomeAddGameScreen from './src/screens/HomeAddGameScreen';
 import ProfileSettingScreen from './src/screens/ProfileSettingScreen';
-import ChatScreen from './src/screens/ChatScreen'; // Import ChatScreen
-import ChatDetailScreen from './src/screens/ChatDetailScreen'; // Import ChatDetailScreen
+import ChatScreen from './src/screens/ChatScreen';
+import ChatDetailScreen from './src/screens/ChatDetailScreen';
 import Entypo from '@expo/vector-icons/Entypo';
-import ProfilAffichageSettingsScreen from './src/screens/ProfilAffichageSettingsScreen'; // Import DisplaySettingsScreen
+import ProfilAffichageSettingsScreen from './src/screens/ProfilAffichageSettingsScreen';
+import ProfileEditMdpCode from './src/screens/ProfileEditMdpCode';
+import ProfileEditMdpNewMdp from './src/screens/ProfileEditMdpNewMdp';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect, useState } from 'react';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -28,7 +32,7 @@ function TabNavigator() {
         tabBarActiveTintColor: '#ff286a',
         tabBarInactiveTintColor: 'gray',
         tabBarStyle: {
-          backgroundColor: '#303030', // Changez cette couleur pour personnaliser le fond
+          backgroundColor: '#303030',
           paddingTop: 10,
           borderTopWidth: 0,
         },
@@ -75,6 +79,8 @@ export default function App() {
         <Stack.Screen name="ProfileSetting" component={ProfileSettingScreen} options={{ headerShown: false }} />
         <Stack.Screen name="ChatDetail" component={ChatDetailScreen} options={{ headerShown: false }} />
         <Stack.Screen name="AffichageSetting" component={ProfilAffichageSettingsScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="ProfileEditMdpCode" component={ProfileEditMdpCode} options={{ headerShown: false }} />
+        <Stack.Screen name="ProfileEditMdpNewMdp" component={ProfileEditMdpNewMdp} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   )
